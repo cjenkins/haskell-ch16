@@ -58,12 +58,12 @@ data K a b = K a
 instance Functor (K a) where
   fmap f (K a) = K a
 
---newtype Flip f a b =
---  Flip (f b a)
---  deriving (Eq, Show)
+newtype Flip f a b =
+  Flip (f b a)
+  deriving (Eq, Show)
 
---instance Functor (Flip K a) where
---  fmap f (Flip fba) = Flip ((K (f a)) (f a) b)
+instance Functor (Flip K a) where
+  fmap f (Flip (K a)) = Flip (K $ f a)
 
 data EvilGoateeConst a b =
   GoatyConst b

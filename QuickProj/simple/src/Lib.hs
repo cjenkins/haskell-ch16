@@ -2,6 +2,7 @@ module Lib where
 
 import Test.QuickCheck
 
+--
 newtype Identity a = Identity a deriving (Eq, Show)
 
 instance Functor Identity where
@@ -12,6 +13,7 @@ instance Arbitrary a => Arbitrary (Identity a) where
     a <- arbitrary
     return (Identity a)
 
+--
 data Pair a = Pair a a deriving (Eq, Show)
 
 instance Functor Pair where
@@ -23,6 +25,7 @@ instance Arbitrary a => Arbitrary (Pair a) where
     a2 <- arbitrary
     return (Pair a1 a2)
 
+--
 data Two a b = Two a b deriving (Eq, Show)
 
 instance Functor (Two a) where
@@ -34,6 +37,7 @@ instance (Arbitrary a, Arbitrary b) => Arbitrary (Two a b) where
     b <- arbitrary
     return (Two a b)
 
+--
 data Three a b c = Three a b c deriving (Eq, Show)
 
 instance Functor (Three a b) where
@@ -46,6 +50,7 @@ instance (Arbitrary a, Arbitrary b, Arbitrary c) => Arbitrary (Three a b c) wher
     c <- arbitrary
     return (Three a b c)
 
+--
 data Three' a b = Three' a b b deriving (Eq, Show)
 
 instance Functor (Three' a) where
@@ -58,6 +63,7 @@ instance (Arbitrary a, Arbitrary b) => Arbitrary (Three' a b) where
     b2 <- arbitrary
     return (Three' a b1 b2)
 
+--
 data Four a b c d = Four a b c d deriving (Eq, Show)
 
 instance Functor (Four a b c) where
@@ -71,6 +77,7 @@ instance (Arbitrary a, Arbitrary b, Arbitrary c, Arbitrary d) => Arbitrary (Four
     d <- arbitrary
     return (Four a b c d)
 
+--
 data Four' a b = Four' a a a b deriving (Eq, Show)
 
 instance Functor (Four' a) where
